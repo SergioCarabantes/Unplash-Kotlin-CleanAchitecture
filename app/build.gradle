@@ -22,39 +22,60 @@ android {
     }
 }
 
-dependencies {
-    def dependencies = rootProject.ext.projectDependencies
+configurations {
+    ktlint
+}
 
-    //Application dependencies
-    implementation dependencies.kotlin
-    implementation dependencies.appCompat
-    implementation dependencies.supportLibraryDesign
-    implementation dependencies.recyclerView
-    implementation dependencies.constraintLayout
-    implementation dependencies.cardView
-    implementation dependencies.lifecycle
-    implementation dependencies.roomRuntime
-    kapt dependencies.roomCompiler
-    implementation dependencies.pagination
-    implementation dependencies.paginationrx
-    kapt dependencies.daggerCompiler
-    implementation dependencies.dagger
-    annotationProcessor dependencies.daggerAndroidProcessor
-    implementation dependencies.daggerAndroid
-    implementation dependencies.rxJava
-    implementation dependencies.rxAndroid
-    implementation dependencies.retrofitRxJava2
-    implementation dependencies.gson
-    implementation dependencies.okhttp
-    implementation dependencies.okhttpLoggingInterceptor
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitGson
-    implementation dependencies.timberLogging
-    implementation dependencies.glide
-    annotationProcessor dependencies.glideProcessor
+dependencies {
+    def projectDependencies = rootProject.ext.projectDependencies
+
+    //Application projectDependencies
+    implementation projectDependencies.kotlin
+    implementation projectDependencies.appCompat
+    implementation projectDependencies.supportLibraryDesign
+    implementation projectDependencies.recyclerView
+    implementation projectDependencies.constraintLayout
+    implementation projectDependencies.cardView
+    implementation projectDependencies.lifecycle
+    implementation projectDependencies.roomRuntime
+    kapt projectDependencies.roomCompiler
+    implementation projectDependencies.pagination
+    implementation projectDependencies.paginationrx
+    kapt projectDependencies.daggerCompiler
+    implementation projectDependencies.dagger
+    annotationProcessor projectDependencies.daggerAndroidProcessor
+    implementation projectDependencies.daggerAndroid
+    implementation projectDependencies.rxJava
+    implementation projectDependencies.rxAndroid
+    implementation projectDependencies.retrofitRxJava2
+    implementation projectDependencies.gson
+    implementation projectDependencies.okhttp
+    implementation projectDependencies.okhttpLoggingInterceptor
+    implementation projectDependencies.retrofit
+    implementation projectDependencies.retrofitGson
+    implementation projectDependencies.timberLogging
+    implementation projectDependencies.glide
+    annotationProcessor projectDependencies.glideProcessor
+    ktlint projectDependencies.ktlint
 
     //test
-    testImplementation dependencies.jUnit
-    testImplementation dependencies.jUnitParams
-    testImplementation dependencies.mockito
+    testImplementation projectDependencies.jUnit
+    testImplementation projectDependencies.jUnitParams
+    testImplementation projectDependencies.mockito
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "--reporter=plain",
+            "--reporter=checkstyle,output=${buildDir}/reports/ktlint/checkstyle.xml",
+            "${projectDir}/**/src/**/*.kt"
+}
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.github.shyiko.ktlint.Main"
+    args "-F", "src/**/*.kt"
 }

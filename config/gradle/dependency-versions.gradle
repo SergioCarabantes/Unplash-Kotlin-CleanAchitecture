@@ -25,6 +25,7 @@ ext.versions = [
         timber                      : '4.6.1',
         okhttp_logging_interceptor  : '3.8.1',
         glide                       : '4.0.0',
+        ktlint                      : '0.24.0',
 
         //Test
         jUnit                       : '4.12',
