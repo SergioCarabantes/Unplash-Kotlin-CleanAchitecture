@@ -1,0 +1,4 @@
+ext.pluginDependencies = [
+        android            : "com.android.tools.build:gradle:$versions.gradleAndroidPlugin",
+        kotlin             : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+]
