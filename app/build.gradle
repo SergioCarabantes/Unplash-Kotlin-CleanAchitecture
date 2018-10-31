@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -12,8 +12,9 @@ android {
         vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,39 +30,23 @@ configurations {
 dependencies {
     def projectDependencies = rootProject.ext.projectDependencies
 
-    //Application projectDependencies
     implementation projectDependencies.kotlin
-    implementation projectDependencies.appCompat
-    implementation projectDependencies.supportLibraryDesign
-    implementation projectDependencies.recyclerView
+    implementation projectDependencies.coreKtx
     implementation projectDependencies.constraintLayout
-    implementation projectDependencies.cardView
     implementation projectDependencies.lifecycle
-    implementation projectDependencies.roomRuntime
-    kapt projectDependencies.roomCompiler
-    implementation projectDependencies.pagination
-    implementation projectDependencies.paginationrx
-    kapt projectDependencies.daggerCompiler
+    implementation projectDependencies.recyclerView
     implementation projectDependencies.dagger
-    annotationProcessor projectDependencies.daggerAndroidProcessor
-    implementation projectDependencies.daggerAndroid
+    kapt projectDependencies.daggerCompiler
     implementation projectDependencies.rxJava
     implementation projectDependencies.rxAndroid
-    implementation projectDependencies.retrofitRxJava2
     implementation projectDependencies.gson
-    implementation projectDependencies.okhttp
-    implementation projectDependencies.okhttpLoggingInterceptor
     implementation projectDependencies.retrofit
     implementation projectDependencies.retrofitGson
+    implementation projectDependencies.retrofitRxJava2
+    implementation projectDependencies.okhttp
+    implementation projectDependencies.okhttpLoggingInterceptor
     implementation projectDependencies.timberLogging
-    implementation projectDependencies.glide
-    annotationProcessor projectDependencies.glideProcessor
     ktlint projectDependencies.ktlint
-
-    //test
-    testImplementation projectDependencies.jUnit
-    testImplementation projectDependencies.jUnitParams
-    testImplementation projectDependencies.mockito
 }
 
 task ktlint(type: JavaExec, group: "verification") {
