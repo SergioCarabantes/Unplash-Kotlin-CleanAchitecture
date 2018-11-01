@@ -1,0 +1,38 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        buildConfigField 'String', 'API_UNSPLASH', '"https://www.unsplash.com/api/v1/"'
+        buildConfigField 'String', 'API_UNSPLASH_KEY', '""'
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    def applicationDependencies = rootProject.ext.projectDependencies
+
+    implementation projectDependencies.kotlin
+    implementation applicationDependencies.gson
+    implementation applicationDependencies.retrofit
+    implementation applicationDependencies.retrofitGson
+    implementation applicationDependencies.retrofitRxJava2
+    implementation applicationDependencies.okhttp
+    implementation applicationDependencies.dagger
+    implementation applicationDependencies.timberLogging
+    implementation project(path: ':domain')
+}

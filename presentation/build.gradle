@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion versions.compileSdk
     defaultConfig {
-        applicationId "com.sergio.unplash"
+        applicationId "com.sergio.unsplash"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
         vectorDrawables.useSupportLibrary = true
@@ -29,6 +29,9 @@ configurations {
 
 dependencies {
     def projectDependencies = rootProject.ext.projectDependencies
+
+    implementation project(':domain')
+    implementation project(':data')
 
     implementation projectDependencies.kotlin
     implementation projectDependencies.coreKtx

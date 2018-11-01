@@ -1,4 +1,4 @@
-package com.sergio.unplash
+package com.sergio.unsplash
 
 import android.os.Bundle
 import android.view.Menu
