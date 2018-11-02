@@ -11,23 +11,23 @@ import javax.inject.Inject
 import kotlin.properties.Delegates
 
 
-class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.UserViewHolder>() {
+class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.PhotoViewHolder>() {
 
-    internal var usersList: List<HomeView> by Delegates.observable(emptyList()) {
+    internal var photoList: List<HomeView> by Delegates.observable(emptyList()) {
         _, _, _ -> notifyDataSetChanged()
     }
 
-    internal var clickListener: (HomeView) -> Unit = { _ -> }
+    private var clickListener: (HomeView) -> Unit = { }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            UserViewHolder(parent.inflate(R.layout.row_home))
+            PhotoViewHolder(parent.inflate(R.layout.row_home))
 
-    override fun onBindViewHolder(userViewHolder: UserViewHolder, position: Int) =
-            userViewHolder.bind(usersList[position], clickListener)
+    override fun onBindViewHolder(photoViewHolder: PhotoViewHolder, position: Int) =
+            photoViewHolder.bind(photoList[position], clickListener)
 
-    override fun getItemCount() = usersList.size
+    override fun getItemCount() = photoList.size
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(homeView: HomeView, clickListener: (HomeView) -> Unit) {
             itemView.mainPhoto.load(homeView.mainPhotoUrl)
             itemView.setOnClickListener { clickListener(homeView) }

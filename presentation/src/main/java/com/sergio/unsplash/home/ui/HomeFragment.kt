@@ -59,6 +59,6 @@ class HomeFragment : BaseFragment() {
         } else {
             emptyLayout.visible()
         }
-        homeAdapter.usersList = userList.orEmpty()
+        homeAdapter.photoList = userList.orEmpty()
     }
 }
