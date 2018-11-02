@@ -7,7 +7,7 @@ import com.sergio.unsplash.di.modules.ApplicationModule
 
 class UnsplashApplication: Application() {
 
-    private val applicationComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
+    val applicationComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         DaggerApplicationComponent
             .builder()
             .applicationModule(ApplicationModule(this))
