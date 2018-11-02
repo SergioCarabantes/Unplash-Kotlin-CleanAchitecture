@@ -1,18 +1,11 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
-
-
-
+    compileSdkVersion versions.compileSdk
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
     }
 
     buildTypes {
@@ -25,10 +18,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    def applicationDependencies = rootProject.ext.projectDependencies
+    implementation projectDependencies.kotlin
+    implementation applicationDependencies.retrofitRxJava2
+    implementation applicationDependencies.dagger
+    implementation applicationDependencies.rxAndroid
+}
+repositories {
+    mavenCentral()
 }

@@ -9,8 +9,8 @@ android {
         minSdkVersion versions.minSdk
         targetSdkVersion versions.targetSdk
 
-        buildConfigField 'String', 'API_UNSPLASH', '"https://www.unsplash.com/api/v1/"'
-        buildConfigField 'String', 'API_UNSPLASH_KEY', '""'
+        buildConfigField 'String', 'API_UNSPLASH', '"https://api.unsplash.com/"'
+        buildConfigField 'String', 'API_UNSPLASH_KEY', '"Client-ID 3d24f82136d94e00283af5f6836a57c62998b2575ebf6932e626765f2cfd2984"'
 
     }
 

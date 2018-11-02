@@ -25,5 +25,5 @@ ext.versions = [
         ktlint                      : '0.24.0',
 
         // Kotlin
-        kotlin                      : '1.3.0-rc-190',
+        kotlin                      : '1.3.0',
 ]
