@@ -1,6 +1,6 @@
 package com.sergio.unsplash.di.modules
 
-import com.sergio.unsplash.data.remote.UnsplashService
+import com.sergio.unsplash.data.remote.UnsplashApi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -11,7 +11,7 @@ class ServicesModule {
 
     @Provides
     @Singleton
-    fun provideUsersService(retrofit: Retrofit): UnsplashService {
-        return retrofit.create<UnsplashService>(UnsplashService::class.java)
+    fun provideUsersService(retrofit: Retrofit): UnsplashApi {
+        return retrofit.create<UnsplashApi>(UnsplashApi::class.java)
     }
 }

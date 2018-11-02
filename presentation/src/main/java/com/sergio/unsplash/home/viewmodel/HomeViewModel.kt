@@ -10,24 +10,19 @@ import timber.log.Timber
 import javax.inject.Inject
 
 
-class HomeViewModel
-@Inject constructor(private val getPhotosUseCase: GetPhotosUseCase): ViewModel() {
+class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosUseCase): ViewModel() {
 
     var photos: MutableLiveData<List<HomeView>> = MutableLiveData()
 
-    fun loadPhotos() = getPhotosUseCase.execute(
-        Request(),
-        GetPhotosOutputImpl()
-    )
+    fun loadPhotos() = getPhotosUseCase.execute(Request(), GetPhotosOutputImpl())
 
     inner class GetPhotosOutputImpl: GetPhotosOutput {
         override fun onSuccess(photoList: List<Photo>) {
-            Timber.i("info photo: $photoList")
             photos.value = photoList.map { HomeView(it.url) }
         }
 
         override fun onUnknownError(throwable: Throwable) {
-            Timber.i("info photo error: $throwable")
+            Timber.i("loadPhotos onUnknownError: $throwable")
         }
 
     }
