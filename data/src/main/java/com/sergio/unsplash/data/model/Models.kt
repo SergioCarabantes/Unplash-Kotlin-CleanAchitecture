@@ -15,7 +15,7 @@ data class PhotoModel(
     @SerializedName("description") val description: String?,
     @SerializedName("user") val user: UserModel,
     @SerializedName("urls") val urls: UrlsModel,
-    @SerializedName("id") val links: LinksModel
+    @SerializedName("links") val links: LinksModel
 )
 
 data class UserModel(

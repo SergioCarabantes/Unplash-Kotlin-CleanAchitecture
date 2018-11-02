@@ -4,6 +4,7 @@ ext.projectDependencies = [
         coreKtx                     : "androidx.core:core-ktx:$versions.coreKtx",
         constraintLayout            : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
         lifecycle                   : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
+        lifecycleExtensions         : "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
         recyclerView                : "androidx.recyclerview:recyclerview:$versions.androidx",
         material                    : "com.google.android.material:material:$versions.material",
         dagger                      : "com.google.dagger:dagger:$versions.dagger",

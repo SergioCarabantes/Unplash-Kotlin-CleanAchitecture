@@ -18,7 +18,7 @@ class GetPhotosUseCase @Inject constructor(private val usersRepository: Unsplash
                 output::onUnknownError)
     }
 
-    data class Request(val page: Int, val query: String)
+    class Request
 
     interface GetPhotosOutput: Output {
         fun onSuccess(photoList: List<Photo>)

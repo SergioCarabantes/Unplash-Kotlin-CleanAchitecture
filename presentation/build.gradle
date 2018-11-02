@@ -37,6 +37,7 @@ dependencies {
     implementation projectDependencies.coreKtx
     implementation projectDependencies.constraintLayout
     implementation projectDependencies.lifecycle
+    implementation projectDependencies.lifecycleExtensions
     implementation projectDependencies.recyclerView
     implementation projectDependencies.dagger
     kapt projectDependencies.daggerCompiler
@@ -49,6 +50,7 @@ dependencies {
     implementation projectDependencies.okhttp
     implementation projectDependencies.okhttpLoggingInterceptor
     implementation projectDependencies.timberLogging
+    implementation projectDependencies.glide
     ktlint projectDependencies.ktlint
 }
 
