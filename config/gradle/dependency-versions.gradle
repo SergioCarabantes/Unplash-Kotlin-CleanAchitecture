@@ -6,7 +6,7 @@ ext.versions = [
         minSdk                      : 21,
 
         // plugins
-        gradleAndroidPlugin         : '3.2.0',
+        gradleAndroidPlugin         : '3.2.1',
 
         // libraries
         androidx                    : '1.0.0',

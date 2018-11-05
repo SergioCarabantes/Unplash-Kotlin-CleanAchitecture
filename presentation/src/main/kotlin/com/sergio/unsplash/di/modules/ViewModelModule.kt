@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.sergio.unsplash.common.ViewModelFactory
 import com.sergio.unsplash.common.ViewModelKey
-import com.sergio.unsplash.home.viewmodel.HomeViewModel
+import com.sergio.unsplash.features.home.HomeViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

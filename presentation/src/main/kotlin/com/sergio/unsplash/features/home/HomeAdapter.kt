@@ -1,4 +1,4 @@
-package com.sergio.unsplash.home.ui
+package com.sergio.unsplash.features.home
 
 import android.view.View
 import android.view.ViewGroup

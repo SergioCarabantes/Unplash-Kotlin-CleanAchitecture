@@ -2,7 +2,7 @@ package com.sergio.unsplash.di.components
 
 import com.sergio.unsplash.UnsplashApplication
 import com.sergio.unsplash.di.modules.*
-import com.sergio.unsplash.home.ui.HomeFragment
+import com.sergio.unsplash.features.home.HomeFragment
 import dagger.Component
 import javax.inject.Singleton
 

@@ -1,3 +1,3 @@
-package com.sergio.unsplash.home.ui
+package com.sergio.unsplash.features.home
 
 data class HomeView(val mainPhotoUrl: String)

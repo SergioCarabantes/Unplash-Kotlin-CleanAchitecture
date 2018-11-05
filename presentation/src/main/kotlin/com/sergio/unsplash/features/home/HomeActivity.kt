@@ -1,9 +1,8 @@
-package com.sergio.unsplash.home.ui
+package com.sergio.unsplash.features.home
 
 import android.os.Bundle
 import com.sergio.unsplash.R
 import com.sergio.unsplash.common.BaseActivity
-import com.sergio.unsplash.extensions.inTransaction
 import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeActivity : BaseActivity() {
@@ -12,11 +11,6 @@ class HomeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_layout)
         setSupportActionBar(toolbar)
-        addFragment()
-    }
-
-    private fun addFragment() {
-        supportFragmentManager.inTransaction {
-            add( R.id.fragment_container, HomeFragment()) }
+        addFragment(savedInstanceState, HomeFragment())
     }
 }

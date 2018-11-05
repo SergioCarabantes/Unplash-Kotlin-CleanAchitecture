@@ -1,16 +1,16 @@
-package com.sergio.unsplash.home.viewmodel
+package com.sergio.unsplash.features.home
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.sergio.unsplash.common.BaseViewModel
 import com.sergio.unsplash.domain.model.Photo
 import com.sergio.unsplash.domain.usecase.GetPhotosUseCase
-import com.sergio.unsplash.domain.usecase.GetPhotosUseCase.*
-import com.sergio.unsplash.home.ui.HomeView
+import com.sergio.unsplash.domain.usecase.GetPhotosUseCase.GetPhotosOutput
+import com.sergio.unsplash.domain.usecase.GetPhotosUseCase.Request
 import timber.log.Timber
 import javax.inject.Inject
 
 
-class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosUseCase): ViewModel() {
+class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosUseCase): BaseViewModel() {
 
     var photos: MutableLiveData<List<HomeView>> = MutableLiveData()
 
@@ -23,6 +23,7 @@ class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosU
 
         override fun onUnknownError(throwable: Throwable) {
             Timber.i("loadPhotos onUnknownError: $throwable")
+            //handleFailure(throwable)
         }
 
     }
