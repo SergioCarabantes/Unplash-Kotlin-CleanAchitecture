@@ -14,6 +14,6 @@ interface UnsplashApi {
 
     companion object {
         const val DEFAULT_PAGE = 1
-        const val DEFAULT_ITEMS_PER_PAGE = 25
+        const val DEFAULT_ITEMS_PER_PAGE = 30
     }
 }

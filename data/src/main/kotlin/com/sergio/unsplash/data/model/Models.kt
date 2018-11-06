@@ -64,6 +64,6 @@ fun List<PhotoModel>.mapToDomain(): List<Photo> = this.map { it.mapToDomain() }
 fun PhotoModel.mapToDomain(): Photo = Photo(
     this.id,
     this.urls.regular,
-    this.user.username,
+    this.user.name,
     this.description,
     this.createdAt)

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="palette_blue800">#0277BD</color>
+    <color name="palette_blue900">#01579B</color>
+    <color name="palette_green800">#00695C</color>
+    <color name="palette_grey700">#616161</color>
+
+</resources>

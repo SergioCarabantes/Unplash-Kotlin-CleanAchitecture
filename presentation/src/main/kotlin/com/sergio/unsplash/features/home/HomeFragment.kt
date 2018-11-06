@@ -3,6 +3,7 @@ package com.sergio.unsplash.features.home
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.sergio.unsplash.R
 import com.sergio.unsplash.common.BaseFragment
 import com.sergio.unsplash.common.exception.Failure
@@ -25,7 +26,7 @@ class HomeFragment : BaseFragment() {
 
     private fun initViewModel() {
         homeViewModel = viewModel(viewModelFactory) {
-            observe(photos, ::renderUserList)
+            observe(photos, ::renderPhotoList)
             failure(failure, ::handleFailure)
         }
     }
@@ -37,8 +38,13 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initializeRecyclerView() {
-        photoList.layoutManager = LinearLayoutManager(context)
-        photoList.adapter = homeAdapter
+        photosRecyclerView.layoutManager = LinearLayoutManager(context)
+        photosRecyclerView.addOnScrollListener(recyclerViewOnScrollListener)
+        photosRecyclerView.adapter = homeAdapter
+    }
+
+    private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener by lazy {
+        photosRecyclerView.pagination { homeViewModel.loadPhotos(it) }
     }
 
     private fun loadPhotos() {
@@ -49,14 +55,14 @@ class HomeFragment : BaseFragment() {
 
     override fun layoutId() = R.layout.fragment_home
 
-    private fun renderUserList(userList: List<HomeView>?) {
+    private fun renderPhotoList(list: List<HomeView>?) {
         progressBar.invisible()
-        if (userList!!.isNotEmpty()) {
+        if (list!!.isNotEmpty()) {
             emptyLayout.invisible()
         } else {
             emptyLayout.visible()
         }
-        homeAdapter.photoList = userList.orEmpty()
+        homeAdapter.addContent(list)
     }
 
     private fun handleFailure(failure: Failure?) {
