@@ -34,7 +34,9 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeRecyclerView()
-        loadPhotos()
+        if (firstTimeCreated(savedInstanceState)) {
+            loadPhotos()
+        }
     }
 
     private fun initializeRecyclerView() {

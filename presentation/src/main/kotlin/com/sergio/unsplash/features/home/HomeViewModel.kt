@@ -12,7 +12,9 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosUseCase): BaseViewModel() {
 
-    var photos: MutableLiveData<List<HomeView>> = MutableLiveData()
+    val photos: MutableLiveData<List<HomeView>> by lazy {
+        MutableLiveData<List<HomeView>>()
+    }
 
     fun loadPhotos(page: Int = 1): Disposable {
         return getPhotosUseCase.execute(GetPhotosUseCase.GetPhotosRequest(page), GetPhotosOutputImpl())

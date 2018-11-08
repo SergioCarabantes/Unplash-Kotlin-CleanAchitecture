@@ -16,9 +16,11 @@ class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.Photo
 
     private var clickListener: (HomeView) -> Unit = { }
 
-    fun addContent(list: List<HomeView>) {
-        photoList.addAll(list)
-        notifyDataSetChanged()
+    fun addContent(list: List<HomeView>?) {
+        list?.let {
+            photoList.addAll(list)
+            notifyDataSetChanged()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
