@@ -17,16 +17,16 @@ class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosU
     }
 
     fun loadPhotos(page: Int = 1): Disposable {
-        return getPhotosUseCase.execute(GetPhotosUseCase.GetPhotosRequest(page), GetPhotosOutputImpl())
+        return getPhotosUseCase.execute(GetPhotosUseCase.Request(page), GetPhotosOutputImpl())
     }
 
     inner class GetPhotosOutputImpl: GetPhotosOutput {
         override fun onSuccess(photoList: List<Photo>) {
-            photos.value = photoList.map { HomeView(it.url, it.name) }
+            photos.value = photoList.map { HomeView(it.id, it.url, it.name) }
         }
 
         override fun onUnknownError(throwable: Throwable) {
-            Timber.i("loadPhotos onUnknownError: $throwable")
+            Timber.i("loadPhotoDetail onUnknownError: $throwable")
             //handleFailure(throwable)
         }
 

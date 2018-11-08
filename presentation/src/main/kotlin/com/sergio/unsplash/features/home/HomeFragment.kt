@@ -45,7 +45,7 @@ class HomeFragment : BaseFragment() {
         photosRecyclerView.layoutManager = LinearLayoutManager(context)
         photosRecyclerView.addOnScrollListener(recyclerViewOnScrollListener)
         photosRecyclerView.adapter = homeAdapter
-        homeAdapter.clickListener = { navigator.showDetailScreen(activity!!, it.name) }
+        homeAdapter.clickListener = { navigator.showDetailScreen(activity!!, it.id) }
     }
 
     private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener by lazy {
