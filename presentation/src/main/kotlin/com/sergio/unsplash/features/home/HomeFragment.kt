@@ -8,12 +8,14 @@ import com.sergio.unsplash.R
 import com.sergio.unsplash.common.BaseFragment
 import com.sergio.unsplash.common.exception.Failure
 import com.sergio.unsplash.extensions.*
+import com.sergio.unsplash.navigation.Navigator
 import kotlinx.android.synthetic.main.empty.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
 class HomeFragment : BaseFragment() {
 
+    @Inject lateinit var navigator: Navigator
     @Inject lateinit var homeAdapter: HomeAdapter
 
     private lateinit var homeViewModel: HomeViewModel
@@ -43,6 +45,7 @@ class HomeFragment : BaseFragment() {
         photosRecyclerView.layoutManager = LinearLayoutManager(context)
         photosRecyclerView.addOnScrollListener(recyclerViewOnScrollListener)
         photosRecyclerView.adapter = homeAdapter
+        homeAdapter.clickListener = { navigator.showDetailScreen(activity!!, it.name) }
     }
 
     private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener by lazy {

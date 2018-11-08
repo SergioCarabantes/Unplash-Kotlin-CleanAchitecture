@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.PhotoViewHolder>() {
 
-    var photoList: MutableList<HomeView> = arrayListOf()
+    private var photoList: MutableList<HomeView> = arrayListOf()
 
-    private var clickListener: (HomeView) -> Unit = { }
+    var clickListener: (HomeView) -> Unit = { }
 
     fun addContent(list: List<HomeView>?) {
         list?.let {
