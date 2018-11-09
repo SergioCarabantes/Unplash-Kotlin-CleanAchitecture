@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sergio.unsplash.R
 import com.sergio.unsplash.extensions.inflate
 import com.sergio.unsplash.extensions.load
+import com.sergio.unsplash.extensions.startSaturationAnimation
 import kotlinx.android.synthetic.main.row_home.view.*
 import javax.inject.Inject
 
@@ -34,7 +35,9 @@ class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.Photo
 
     class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(homeView: HomeView, clickListener: (HomeView, ImageView) -> Unit) {
-            itemView.mainPictureImageView.load(homeView.mainPhotoUrl)
+            itemView.mainPictureImageView.load(homeView.mainPhotoUrl, homeView.thumb, onLoadingFinished = {
+                itemView.mainPictureImageView.startSaturationAnimation()
+            })
             itemView.fullNameTextView.text = homeView.name
             itemView.setOnClickListener { clickListener(homeView, itemView.mainPictureImageView) }
         }

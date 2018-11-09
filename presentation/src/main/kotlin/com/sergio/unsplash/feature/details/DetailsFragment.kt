@@ -35,7 +35,6 @@ class DetailsFragment  : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activity?.startPostponedEnterTransition()
         if (firstTimeCreated(savedInstanceState)) {
             photoId?.let { detailsViewModel.loadPhotoDetail(it) }
         }
@@ -45,9 +44,12 @@ class DetailsFragment  : BaseFragment() {
 
     private fun renderPhotoDetail(detail: DetailView?) {
         detail?.let {
-            photoImageView.load(it.mainPhotoUrl)
+            val url = it.mainPhotoUrl
+            val thumb = it.thumb
+            photoImageView.load(url, thumb, false) {
+                activity?.supportStartPostponedEnterTransition()
+            }
         }
-
     }
 
     private fun handleFailure(failure: Failure?) {

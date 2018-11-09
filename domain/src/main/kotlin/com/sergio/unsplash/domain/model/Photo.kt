@@ -4,4 +4,5 @@ data class Photo(val id: String,
                  val url: String,
                  val name: String,
                  val description: String?,
-                 val created_at: String)
+                 val created_at: String,
+                 val thumb: String)

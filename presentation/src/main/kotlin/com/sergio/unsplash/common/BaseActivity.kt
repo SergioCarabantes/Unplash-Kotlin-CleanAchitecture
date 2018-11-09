@@ -10,6 +10,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportStartPostponedEnterTransition()
         setContentView(R.layout.activity_layout)
         setSupportActionBar(toolbar)
         addFragment(savedInstanceState)

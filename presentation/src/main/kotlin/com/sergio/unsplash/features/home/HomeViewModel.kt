@@ -26,7 +26,7 @@ class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosU
 
     inner class GetPhotosOutputImpl: GetPhotosOutput {
         override fun onSuccess(photoList: List<Photo>) {
-            photos.value = photoList.map { HomeView(it.id, it.url, it.name) }
+            photos.value = photoList.map { HomeView(it.id, it.url, it.thumb, it.name) }
         }
 
         override fun onUnknownError(throwable: Throwable) {

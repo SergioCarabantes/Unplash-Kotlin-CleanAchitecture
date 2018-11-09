@@ -19,7 +19,7 @@ class DetailsViewModel @Inject constructor(private val getPhotoDetailUseCase: Ge
 
     inner class GetPhotosOutputImpl : GetPhotoDetailUseCase.GetPhotosOutput {
         override fun onSuccess(response: Photo) {
-            photo.value = DetailView(response.url, response.name)
+            photo.value = DetailView(response.url, response.thumb, response.name)
         }
 
         override fun onUnknownError(throwable: Throwable) {

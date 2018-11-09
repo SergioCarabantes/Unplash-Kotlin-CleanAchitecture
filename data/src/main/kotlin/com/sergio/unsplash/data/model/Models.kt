@@ -66,4 +66,5 @@ fun PhotoModel.mapToDomain(): Photo = Photo(
     this.urls.regular,
     this.user.name,
     this.description,
-    this.createdAt)
+    this.createdAt,
+    this.urls.thumb)
