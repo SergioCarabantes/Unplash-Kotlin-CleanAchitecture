@@ -2,6 +2,7 @@ package com.sergio.unsplash.features.home
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.sergio.unsplash.R
 import com.sergio.unsplash.extensions.inflate
@@ -14,7 +15,7 @@ class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.Photo
 
     private var photoList: MutableList<HomeView> = arrayListOf()
 
-    var clickListener: (HomeView) -> Unit = { }
+    internal var clickListener: (HomeView, ImageView) -> Unit = { _, _ -> }
 
     fun addContent(list: List<HomeView>?) {
         list?.let {
@@ -32,10 +33,10 @@ class HomeAdapter @Inject constructor() : RecyclerView.Adapter<HomeAdapter.Photo
     override fun getItemCount() = photoList.size
 
     class PhotoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(homeView: HomeView, clickListener: (HomeView) -> Unit) {
+        fun bind(homeView: HomeView, clickListener: (HomeView, ImageView) -> Unit) {
             itemView.mainPictureImageView.load(homeView.mainPhotoUrl)
             itemView.fullNameTextView.text = homeView.name
-            itemView.setOnClickListener { clickListener(homeView) }
+            itemView.setOnClickListener { clickListener(homeView, itemView.mainPictureImageView) }
         }
     }
 }

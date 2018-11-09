@@ -3,4 +3,5 @@
     <color name="theme__colorPrimary">@color/palette_blue800</color>
     <color name="theme__colorPrimaryDark">@color/material_blue_grey_900</color>
     <color name="theme__colorAccent">@color/palette_green800</color>
+    <color name="theme__windowBackground">@android:color/black</color>
 </resources>

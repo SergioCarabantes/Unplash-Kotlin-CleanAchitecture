@@ -35,6 +35,7 @@ class DetailsFragment  : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.startPostponedEnterTransition()
         if (firstTimeCreated(savedInstanceState)) {
             photoId?.let { detailsViewModel.loadPhotoDetail(it) }
         }
