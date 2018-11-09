@@ -43,6 +43,7 @@ dependencies {
     implementation projectDependencies.kotlin
     implementation projectDependencies.coreKtx
     implementation projectDependencies.constraintLayout
+    implementation projectDependencies.material
     implementation projectDependencies.lifecycle
     implementation projectDependencies.lifecycleExtensions
     implementation projectDependencies.recyclerView

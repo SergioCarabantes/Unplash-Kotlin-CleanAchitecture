@@ -20,6 +20,10 @@ class HomeViewModel @Inject constructor(private val getPhotosUseCase: GetPhotosU
         return getPhotosUseCase.execute(GetPhotosUseCase.Request(page), GetPhotosOutputImpl())
     }
 
+    fun onRefreshLayout() {
+        loadPhotos()
+    }
+
     inner class GetPhotosOutputImpl: GetPhotosOutput {
         override fun onSuccess(photoList: List<Photo>) {
             photos.value = photoList.map { HomeView(it.id, it.url, it.name) }

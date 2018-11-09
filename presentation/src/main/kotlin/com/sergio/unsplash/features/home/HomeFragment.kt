@@ -36,6 +36,7 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeRecyclerView()
+        initializeRefreshLayout()
         if (firstTimeCreated(savedInstanceState)) {
             loadPhotos()
         }
@@ -48,6 +49,14 @@ class HomeFragment : BaseFragment() {
         homeAdapter.clickListener = {
                 homeView, imageView ->  navigator.showDetailScreen(activity!!, homeView.id, imageView)
         }
+    }
+
+    private fun initializeRefreshLayout() {
+        swipeRefreshLayout.setOnRefreshListener {
+            swipeRefreshLayout.isRefreshing = true
+            homeViewModel.onRefreshLayout()
+        }
+        swipeRefreshLayout.isRefreshing = false
     }
 
     private val recyclerViewOnScrollListener: RecyclerView.OnScrollListener by lazy {
@@ -69,10 +78,13 @@ class HomeFragment : BaseFragment() {
         } else {
             emptyLayout.visible()
         }
+
+        swipeRefreshLayout.isRefreshing = false
         homeAdapter.addContent(list)
     }
 
     private fun handleFailure(failure: Failure?) {
+        swipeRefreshLayout.isRefreshing = false
         when (failure) {
             is Failure.UnknowError -> emptyLayout.invisible()
         }
